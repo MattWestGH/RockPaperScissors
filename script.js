@@ -2,6 +2,24 @@
 let rockPaperScissorArr = ["Rock", "Paper", "Scissors"]
 let playerScore = 0;
 let computerScore = 0;
+const rpsDiv = document.createElement("div");
+const body = document.body;
+const rockBtn = document.createElement("button");
+const paperBtn = document.createElement("button");
+const scissorsBtn = document.createElement("button");
+scissorsBtn.textContent = "Scissors";
+rockBtn.textContent = "Rock";
+paperBtn.textContent = "Paper";
+rpsDiv.appendChild(rockBtn);
+rpsDiv.appendChild(paperBtn);
+rpsDiv.appendChild(scissorsBtn);
+rockBtn.setAttribute("onclick", "rockBtnSubmit()")
+paperBtn.setAttribute("onclick", "paperBtnSubmit()")
+scissorsBtn.setAttribute("onclick", "scissorsBtnSubmit()")
+
+function rockBtnSubmit() { console.log("rock") }
+function paperBtnSubmit() { console.log("paper") }
+function scissorsBtnSubmit() { console.log("scissors") }
 function getComputerChoice() {
     let randChoice = Math.floor(Math.random() * 3)
     switch (randChoice) {
@@ -63,17 +81,20 @@ function nextRound() {
         console.log("Thank you for playing!");
     } else { nextRound() }
 }
-
+// I want to use this to update the score after every round and reflect on the page.
+//function updateScore() { }
 function startGame() {
-    let playerInput = prompt("Please select rock, paper or scissors.")
-    let gameResult = compareChoice(capitalize(playerInput));
-    console.log(gameResult)
-    console.log("Score");
-    console.log("Player: " + playerScore);
-    console.log("Computer: " + computerScore);
-    nextRound();
+    document.getElementById("startBtn").remove()
+    body.appendChild(rpsDiv);
+    //while (playerScore <= 5 || computerScore <= 5) {
+
+    //    //let playerInput = prompt("Please select rock, paper or scissors.")
+    //    //let gameResult = compareChoice(capitalize(playerInput));
+    //    //console.log(gameResult)
+    //    //console.log("Score");
+    //    //console.log("Player: " + playerScore);
+    //    //console.log("Computer: " + computerScore);
+    //    //nextRound();
+    //}
+
 }
-
-startGame();
-
-//add funtionality to keep score and make it a round based game
